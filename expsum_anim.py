@@ -37,14 +37,14 @@ def init_gen(year, month, day):
         xmin, xmax = np.min(xaxis), np.max(xaxis)
         ymin, ymax = np.min(yaxis), np.max(yaxis)
         # Calculating the centre point
-        x0 = xmin + (xmax-xmin) / 2
-        y0 = ymin + (ymax-ymin) / 2
+        x0 = xmin + (xmax - xmin) / 2
+        y0 = ymin + (ymax - ymin) / 2
         # Calculating the visible area around the centre point
-        half_interval = max((xmax-xmin), (ymax-ymin)) / 2
+        half_interval = max((xmax - xmin), (ymax - ymin)) / 2
 
         # Plotting and saving in file
-        ax.set_xlim(x0-half_interval, x0+half_interval)
-        ax.set_ylim(y0-half_interval, y0+half_interval)
+        ax.set_xlim(x0 - half_interval, x0 + half_interval)
+        ax.set_ylim(y0 - half_interval, y0 + half_interval)
 
         return line,
 
