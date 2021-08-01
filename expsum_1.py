@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-WORKING_DIR = '/Users/timus/Dropbox/Developing/Python/ExpSum/plots/days'
+WORKING_DIR = '/Users/me/etc'
 
 
 def calculate_vertices(year, month, day) -> np.array:
