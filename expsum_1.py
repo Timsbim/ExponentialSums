@@ -54,16 +54,16 @@ if __name__ == '__main__':
         ymin, ymax = np.min(yaxis), np.max(yaxis)
 
         # Calculating the centre point
-        x0 = xmin + (xmax-xmin) / 2
-        y0 = ymin + (ymax-ymin) / 2
+        x0 = xmin + (xmax - xmin) / 2
+        y0 = ymin + (ymax - ymin) / 2
 
         # Calculating the visible area around the centre point
-        half_interval = max((xmax-xmin), (ymax-ymin)) / 2
+        half_interval = max((xmax - xmin), (ymax - ymin)) / 2
 
         # Plotting
         fig, ax = plt.subplots(figsize=(5, 5))
-        ax.set_xlim(x0-half_interval, x0+half_interval)
-        ax.set_ylim(y0-half_interval, y0+half_interval)
+        ax.set_xlim(x0 - half_interval, x0 + half_interval)
+        ax.set_ylim(y0 - half_interval, y0 + half_interval)
         ax.axis('off')
         ax.plot(xaxis, yaxis, linewidth=1.5)
 
