@@ -68,6 +68,7 @@ class ExpSum:
         if start == end:
             multi = False
 
+        # Creating plot folder
         self._plot_path.mkdir(parents=True, exist_ok=True)
 
         one_day = timedelta(days=1)
@@ -143,7 +144,7 @@ class ExpSum:
 
 
 e = ExpSum()
-#e.plot()
-#e.plot("2021-08-01", "2021-09-30")
+e.plot()
+e.plot("2021-08-01", "2021-09-30")
 e.plot("2021-10-01", "2021-12-31", multi=True)
-#e.animate(date(2021, 9, 17))
+e.animate(date(2021, 9, 17))
