@@ -47,25 +47,25 @@ if __name__ == '__main__':
         for i in range(1, min((end_day - day).days + 1, 6) + 1):
 
             # Calculating vertices
-            xaxis, yaxis = calculate_vertices(day)
+            x_axis, y_axis = calculate_vertices(day)
 
             # Making sure the plot preserves the natural proportions
-            xmin, xmax = np.min(xaxis), np.max(xaxis)
-            ymin, ymax = np.min(yaxis), np.max(yaxis)
+            x_min, x_max = np.min(x_axis), np.max(x_axis)
+            y_min, y_max = np.min(y_axis), np.max(y_axis)
 
             # Calculating the centre point
-            x0 = xmin + (xmax - xmin) / 2
-            y0 = ymin + (ymax - ymin) / 2
+            x_0 = x_min + (x_max - x_min) / 2
+            y_0 = y_min + (y_max - y_min) / 2
 
             # Calculating the visible area around the centre point
-            half_interval = max((xmax - xmin), (ymax - ymin)) / 2
+            half_interval = max((x_max - x_min), (y_max - y_min)) / 2
 
             # Plotting
             sub = fig.add_subplot(3, 2, i)
-            sub.set_xlim(x0 - half_interval, x0 + half_interval)
-            sub.set_ylim(y0 - half_interval, y0 + half_interval)
+            sub.set_xlim(x_0 - half_interval, x_0 + half_interval)
+            sub.set_ylim(y_0 - half_interval, y_0 + half_interval)
             sub.axis('off')
-            sub.plot(xaxis, yaxis, linewidth=1, color='darkblue')
+            sub.plot(x_axis, y_axis, linewidth=1, color='darkblue')
 
             # Next day ...
             day = day + one_day

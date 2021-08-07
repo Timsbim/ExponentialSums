@@ -43,22 +43,22 @@ class ExpSum:
         return sums.real, sums.imag
 
     @staticmethod
-    def _prepare_plot(ax, xaxis, yaxis):
+    def _prepare_plot(ax, x_axis, y_axis):
 
         # Making sure the plot preserves the natural proportions
-        xmin, xmax = np.min(xaxis), np.max(xaxis)
-        ymin, ymax = np.min(yaxis), np.max(yaxis)
+        x_min, x_max = np.min(x_axis), np.max(x_axis)
+        y_min, y_max = np.min(y_axis), np.max(y_axis)
 
         # Calculating the centre point
-        x0 = xmin + (xmax - xmin) / 2
-        y0 = ymin + (ymax - ymin) / 2
+        x_0 = x_min + (x_max - x_min) / 2
+        y_0 = y_min + (y_max - y_min) / 2
 
         # Calculating the visible area around the centre point
-        half_interval = max((xmax - xmin), (ymax - ymin)) / 2
+        half_interval = max((x_max - x_min), (y_max - y_min)) / 2
 
         # Plotting
-        ax.set_xlim(x0 - half_interval, x0 + half_interval)
-        ax.set_ylim(y0 - half_interval, y0 + half_interval)
+        ax.set_xlim(x_0 - half_interval, x_0 + half_interval)
+        ax.set_ylim(y_0 - half_interval, y_0 + half_interval)
 
     def plot(self, start=date.today(), end=date.today(), multi=False):
         if isinstance(start, str):
@@ -84,12 +84,12 @@ class ExpSum:
                     # Creating ax
                     ax = fig.add_subplot(3, 2, i)
                     # Calculating vertices
-                    xaxis, yaxis = self._calculate_vertices(day)
+                    x_axis, y_axis = self._calculate_vertices(day)
                     # Prepare plotting
-                    self._prepare_plot(ax, xaxis, yaxis)
+                    self._prepare_plot(ax, x_axis, y_axis)
                     # Plotting
                     ax.axis('off')
-                    ax.plot(xaxis, yaxis, linewidth=1.5)
+                    ax.plot(x_axis, y_axis, linewidth=1.5)
 
                     # Next day ...
                     day = day + one_day
@@ -107,12 +107,12 @@ class ExpSum:
                 # Creating figure and ax
                 fig, ax = plt.subplots(figsize=(5, 5))
                 # Calculating vertices
-                xaxis, yaxis = self._calculate_vertices(day)
+                x_axis, y_axis = self._calculate_vertices(day)
                 # Prepare plotting
-                self._prepare_plot(ax, xaxis, yaxis)
+                self._prepare_plot(ax, x_axis, y_axis)
                 # Plotting
                 ax.axis('off')
-                ax.plot(xaxis, yaxis, linewidth=1.5)
+                ax.plot(x_axis, y_axis, linewidth=1.5)
 
                 # Saving plot in file
                 file_path = self._plot_path / f"{day}.png"
@@ -128,17 +128,17 @@ class ExpSum:
 
         # Run-function to update the plot
         def run(frame_no):
-            line.set_data(xaxis[:frame_no + 1], yaxis[:frame_no + 1])
+            line.set_data(x_axis[:frame_no + 1], y_axis[:frame_no + 1])
             return line,
 
         fig, ax = plt.subplots(figsize=(5, 5))
-        xaxis, yaxis = self._calculate_vertices(day)
-        self._prepare_plot(ax, xaxis, yaxis)
+        x_axis, y_axis = self._calculate_vertices(day)
+        self._prepare_plot(ax, x_axis, y_axis)
         line, = ax.plot([], [], lw=1.5)
         ax.axis('off')
 
         ani = FuncAnimation(
-            fig, run, frames=len(xaxis), interval=1, repeat=False, blit=True
+            fig, run, frames=len(x_axis), interval=1, repeat=False, blit=True
         )
         plt.show()
 
