@@ -52,6 +52,7 @@ def init_gen(year, month, day):
 
 
 def run(data):
+    print(data)
     # Updating the data
     x, y = data
     xdata.append(x)
@@ -72,7 +73,7 @@ if __name__ == '__main__':
     ani = FuncAnimation(
         fig,
         run,
-        data_gen(*date),
+        frames=data_gen(*date),
         interval=1,
         init_func=init_gen(*date),
         repeat=False,

@@ -3,6 +3,7 @@ from datetime import date, timedelta
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
 
 class ExpSum:
@@ -29,7 +30,7 @@ class ExpSum:
         # Setting the length of the sum
         length = np.lcm.reduce((month, day, year)) + 1
 
-        return np.add.accumulate(
+        sums = np.add.accumulate(
             [
                 np.exp(
                     2j * np.pi
@@ -39,11 +40,10 @@ class ExpSum:
             ]
         )
 
+        return sums.real, sums.imag
+
     @staticmethod
-    def _plot(ax, sums):
-        # Axis-values: Re and Im of the sums
-        xaxis = sums.real
-        yaxis = sums.imag
+    def _prepare_plot(ax, xaxis, yaxis):
 
         # Making sure the plot preserves the natural proportions
         xmin, xmax = np.min(xaxis), np.max(xaxis)
@@ -59,8 +59,7 @@ class ExpSum:
         # Plotting
         ax.set_xlim(x0 - half_interval, x0 + half_interval)
         ax.set_ylim(y0 - half_interval, y0 + half_interval)
-        ax.axis('off')
-        ax.plot(xaxis, yaxis, linewidth=1.5)
+
 
     def plot(self, start=date.today(), end=date.today(), multi=False):
         if isinstance(start, str):
@@ -80,12 +79,15 @@ class ExpSum:
                 # Creating figure
                 fig = plt.figure(figsize=(10, 15))
                 for i in range(1, min((end - day).days + 1, 6) + 1):
-                    #Creating ax
+                    # Creating ax
                     ax = fig.add_subplot(3, 2, i)
                     # Calculating vertices
-                    sums = self._calculate_vertices(day)
+                    xaxis, yaxis = self._calculate_vertices(day)
+                    # Prepare plotting
+                    self._prepare_plot(ax, xaxis, yaxis)
                     # Plotting
-                    self._plot(ax, sums)
+                    ax.axis('off')
+                    ax.plot(xaxis, yaxis, linewidth=1.5)
 
                 # Next day ...
                 day = day + one_day
@@ -103,9 +105,13 @@ class ExpSum:
                 # Creating figure and ax
                 fig, ax = plt.subplots(figsize=(5, 5))
                 # Calculating vertices
-                sums = self._calculate_vertices(day)
+                xaxis, yaxis = self._calculate_vertices(day)
+                # Prepare plotting
+                self._prepare_plot(ax, xaxis, yaxis)
                 # Plotting
-                self._plot(ax, sums)
+                ax.axis('off')
+                ax.plot(xaxis, yaxis, linewidth=1.5)
+
                 # Saving plot in file
                 file_path = self._plot_path / f"{day}.png"
                 plt.savefig(file_path)
@@ -113,7 +119,41 @@ class ExpSum:
                 # Next day ...
                 day = day + one_day
 
+    def animate(self, day=date.today()):
+        if isinstance(day, str):
+            day = date.fromisoformat(day)
+
+        def data_gen(day):
+            yield from zip(*ExpSum._calculate_vertices(day))
+
+        def init():
+            xaxis, yaxis = self._calculate_vertices(day)
+            self._prepare_plot(ax, xaxis, yaxis)
+            return line,
+
+        def run(data):
+            xdata.append(data[0])
+            ydata.append(data[1])
+            line.set_data(xdata, ydata)
+
+            return line,
+
+        fig, ax = plt.subplots(figsize=(5, 5))
+        line, = ax.plot([], [], lw=1.5)
+        ax.axis('off')
+        xdata, ydata = [], []
+
+        ani = FuncAnimation(
+            fig,
+            run,
+            frames=data_gen(day),
+            interval=1,
+            init_func=init,
+            repeat=False,
+            blit=True
+        )
+        plt.show()
+
+
 e = ExpSum()
-print(e.plot_directory)
-e.plot_directory = "C"
-print(e.plot_directory)
+e.animate()
