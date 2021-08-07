@@ -123,14 +123,7 @@ class ExpSum:
         if isinstance(day, str):
             day = date.fromisoformat(day)
 
-        def data_gen(day):
-            yield from zip(*ExpSum._calculate_vertices(day))
-
-        def init():
-            xaxis, yaxis = self._calculate_vertices(day)
-            self._prepare_plot(ax, xaxis, yaxis)
-            return line,
-
+        # Run-function to update the plot
         def run(data):
             xdata.append(data[0])
             ydata.append(data[1])
@@ -138,22 +131,19 @@ class ExpSum:
 
             return line,
 
+        xaxis, yaxis = self._calculate_vertices(day)
+        data_gen = zip(xaxis, yaxis)
         fig, ax = plt.subplots(figsize=(5, 5))
+        self._prepare_plot(ax, xaxis, yaxis)
         line, = ax.plot([], [], lw=1.5)
         ax.axis('off')
         xdata, ydata = [], []
 
         ani = FuncAnimation(
-            fig,
-            run,
-            frames=data_gen(day),
-            interval=1,
-            init_func=init,
-            repeat=False,
-            blit=True
+            fig, run, frames=data_gen, interval=1, repeat=False, blit=True
         )
         plt.show()
 
 
 e = ExpSum()
-e.animate()
+e.animate(date(2021, 9, 17))
