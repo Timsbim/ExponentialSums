@@ -8,22 +8,23 @@ import matplotlib.pyplot as plt
 WORKING_DIR = '/Users/me/etc'
 
 
-def calculate_vertices(year, month, day) -> np.array:
-
-    # Normalizing year
-    year -= 2000
+def calculate_vertices(day):
+    year, month, day = day.year - 2000, day.month, day.day
 
     # Setting the length of the sum
     length = np.lcm.reduce((month, day, year)) + 1
 
-    def vertices(n):
-        return np.exp(
-            2j * np.pi
-               * (pow(n, 1) / month + pow(n, 2) / day + pow(n, 3) / year)
-        )
+    sums = np.add.accumulate(
+        [
+            np.exp(
+                2j * np.pi
+                * (pow(n, 1) / month + pow(n, 2) / day + pow(n, 3) / year)
+            )
+            for n in np.arange(length)
+        ]
+    )
 
-    # Calculating vertices
-    return np.add.accumulate([vertices(n) for n in np.arange(length)])
+    return sums.real, sums.imag
 
 
 if __name__ == '__main__':
@@ -37,6 +38,7 @@ if __name__ == '__main__':
     end_day = date(2020, 1, 31)
 
     # Creating plots for 6 days at a time
+    one_day = timedelta(days=1)
     day = start_day
     while day <= end_day:
 
@@ -45,9 +47,7 @@ if __name__ == '__main__':
         for i in range(1, min((end_day - day).days + 1, 6) + 1):
 
             # Calculating vertices
-            sums = calculate_vertices(day.year, day.month, day.day)
-            xaxis = sums.real
-            yaxis = sums.imag
+            xaxis, yaxis = calculate_vertices(day)
 
             # Making sure the plot preserves the natural proportions
             xmin, xmax = np.min(xaxis), np.max(xaxis)
@@ -68,7 +68,7 @@ if __name__ == '__main__':
             sub.plot(xaxis, yaxis, linewidth=1, color='darkblue')
 
             # Next day ...
-            day = day + timedelta(days=1)
+            day = day + one_day
 
         # Saving plots in file
         file_name = f"{file_name} - {day}.png"

@@ -1,82 +1,62 @@
+from datetime import date
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 
-def calculate_vertices(year, month, day) -> np.array:
-
-    # Normalizing year
-    year -= 2000
+def calculate_vertices(day):
+    year, month, day = day.year - 2000, day.month, day.day
 
     # Setting the length of the sum
     length = np.lcm.reduce((month, day, year)) + 1
 
-    def vertices(n):
-        return np.exp(
-            2j * np.pi
-               * (pow(n, 1) / month + pow(n, 2) / day + pow(n, 3) / year)
-        )
+    sums = np.add.accumulate(
+        [
+            np.exp(
+                2j * np.pi
+                * (pow(n, 1) / month + pow(n, 2) / day + pow(n, 3) / year)
+            )
+            for n in np.arange(length)
+        ]
+    )
 
-    # Calculating vertices
-    return np.add.accumulate([vertices(n) for n in np.arange(length)])
-
-
-def data_gen(year, month, day):
-    for s in calculate_vertices(year, month, day):
-        yield s.real, s.imag
+    return sums.real, sums.imag
 
 
-def init_gen(year, month, day):
-    def init():
-        # Getting values to adjust the ax
-        sums = calculate_vertices(year, month, day)
-        xaxis = sums.real
-        yaxis = sums.imag
+def prepare_plot(ax, xaxis, yaxis):
 
-        # Making sure the plot preserves the natural proportions
-        xmin, xmax = np.min(xaxis), np.max(xaxis)
-        ymin, ymax = np.min(yaxis), np.max(yaxis)
-        # Calculating the centre point
-        x0 = xmin + (xmax - xmin) / 2
-        y0 = ymin + (ymax - ymin) / 2
-        # Calculating the visible area around the centre point
-        half_interval = max((xmax - xmin), (ymax - ymin)) / 2
+    # Making sure the plot preserves the natural proportions
+    xmin, xmax = np.min(xaxis), np.max(xaxis)
+    ymin, ymax = np.min(yaxis), np.max(yaxis)
 
-        # Plotting and saving in file
-        ax.set_xlim(x0 - half_interval, x0 + half_interval)
-        ax.set_ylim(y0 - half_interval, y0 + half_interval)
+    # Calculating the centre point
+    x0 = xmin + (xmax - xmin) / 2
+    y0 = ymin + (ymax - ymin) / 2
 
-        return line,
+    # Calculating the visible area around the centre point
+    half_interval = max((xmax - xmin), (ymax - ymin)) / 2
 
-    return init
+    # Plotting
+    ax.set_xlim(x0 - half_interval, x0 + half_interval)
+    ax.set_ylim(y0 - half_interval, y0 + half_interval)
 
 
-def run(data):
-    print(data)
-    # Updating the data
-    x, y = data
-    xdata.append(x)
-    ydata.append(y)
-    line.set_data(xdata, ydata)
-
+def run(frame_no):
+    line.set_data(xaxis[:frame_no + 1], yaxis[:frame_no + 1])
     return line,
 
 
 if __name__ == '__main__':
 
+    day = date.today()
+
     fig, ax = plt.subplots(figsize=(5, 5))
+    xaxis, yaxis = calculate_vertices(day)
+    prepare_plot(ax, xaxis, yaxis)
     line, = ax.plot([], [], lw=1.5)
     ax.axis('off')
-    xdata, ydata = [], []
 
-    date = (2021, 9, 17)
     ani = FuncAnimation(
-        fig,
-        run,
-        frames=data_gen(*date),
-        interval=1,
-        init_func=init_gen(*date),
-        repeat=False,
-        blit=True
+        fig, run, frames=len(xaxis), interval=1, repeat=False, blit=True
     )
     plt.show()

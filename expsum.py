@@ -10,7 +10,7 @@ class ExpSum:
 
     def __init__(self, plot_dir=None):
         if plot_dir is None:
-            self._plot_path = Path.cwd()
+            self._plot_path = Path.cwd() / "plots"
         else:
             self._plot_path = Path(plot_dir)
 
@@ -68,6 +68,8 @@ class ExpSum:
         if start == end:
             multi = False
 
+        self._plot_path.mkdir(parents=True, exist_ok=True)
+
         one_day = timedelta(days=1)
         day = start
         if multi:
@@ -88,8 +90,8 @@ class ExpSum:
                     ax.axis('off')
                     ax.plot(xaxis, yaxis, linewidth=1.5)
 
-                # Next day ...
-                day = day + one_day
+                    # Next day ...
+                    day = day + one_day
 
                 # Saving plots in file
                 file_name = f"{start_day} - {day}.png"
@@ -141,4 +143,7 @@ class ExpSum:
 
 
 e = ExpSum()
-e.animate(date(2021, 9, 17))
+#e.plot()
+#e.plot("2021-08-01", "2021-09-30")
+e.plot("2021-10-01", "2021-12-31", multi=True)
+#e.animate(date(2021, 9, 17))
