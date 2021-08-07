@@ -60,7 +60,6 @@ class ExpSum:
         ax.set_xlim(x0 - half_interval, x0 + half_interval)
         ax.set_ylim(y0 - half_interval, y0 + half_interval)
 
-
     def plot(self, start=date.today(), end=date.today(), multi=False):
         if isinstance(start, str):
             start = date.fromisoformat(start)
@@ -116,6 +115,7 @@ class ExpSum:
                 file_path = self._plot_path / f"{day}.png"
                 plt.savefig(file_path)
                 plt.close('all')
+
                 # Next day ...
                 day = day + one_day
 
@@ -124,23 +124,18 @@ class ExpSum:
             day = date.fromisoformat(day)
 
         # Run-function to update the plot
-        def run(data):
-            xdata.append(data[0])
-            ydata.append(data[1])
-            line.set_data(xdata, ydata)
-
+        def run(frame_no):
+            line.set_data(xaxis[:frame_no + 1], yaxis[:frame_no + 1])
             return line,
 
-        xaxis, yaxis = self._calculate_vertices(day)
-        data_gen = zip(xaxis, yaxis)
         fig, ax = plt.subplots(figsize=(5, 5))
+        xaxis, yaxis = self._calculate_vertices(day)
         self._prepare_plot(ax, xaxis, yaxis)
         line, = ax.plot([], [], lw=1.5)
         ax.axis('off')
-        xdata, ydata = [], []
 
         ani = FuncAnimation(
-            fig, run, frames=data_gen, interval=1, repeat=False, blit=True
+            fig, run, frames=len(xaxis), interval=1, repeat=False, blit=True
         )
         plt.show()
 
