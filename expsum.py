@@ -23,9 +23,8 @@ class ExpSum:
         self._plot_path = Path(plot_dir)
 
     @staticmethod
-    def _calculate_vertices(day):
-
-        year, month, day = day.year - 2000, day.month, day.day
+    def _calculate_vertices(dt_day):
+        year, month, day = dt_day.year - 2000, dt_day.month, dt_day.day
 
         # Setting the length of the sum
         length = np.lcm.reduce((month, day, year)) + 1
@@ -146,7 +145,7 @@ class ExpSum:
 
 
 e = ExpSum()
-e.plot()
-e.plot("2021-08-01", "2021-09-30")
-e.plot("2021-10-01", "2021-12-31", multi=True)
-e.animate(date(2021, 9, 17), save=True)
+#e.plot()
+#e.plot("2021-08-01", "2021-09-30")
+#e.plot("2021-10-01", "2021-12-31", multi=True)
+e.animate(save=True)

@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 
-def calculate_vertices(day):
-    year, month, day = day.year - 2000, day.month, day.day
+def _calculate_vertices(dt_day):
+    year, month, day = dt_day.year - 2000, dt_day.month, dt_day.day
 
     # Setting the length of the sum
     length = np.lcm.reduce((month, day, year)) + 1
