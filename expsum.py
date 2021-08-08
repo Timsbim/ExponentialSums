@@ -95,8 +95,7 @@ class ExpSum:
                     day = day + one_day
 
                 # Saving plots in file
-                file_name = f"{start_day} - {day}.png"
-                file_path = self._plot_path / file_name
+                file_path = self._plot_path / f"{start_day} - {day}.png"
                 plt.savefig(file_path)
                 plt.close('all')
         else:
@@ -122,7 +121,7 @@ class ExpSum:
                 # Next day ...
                 day = day + one_day
 
-    def animate(self, day=date.today()):
+    def animate(self, day=date.today(), save=False):
         if isinstance(day, str):
             day = date.fromisoformat(day)
 
@@ -140,6 +139,9 @@ class ExpSum:
         ani = FuncAnimation(
             fig, run, frames=len(x_axis), interval=1, repeat=False, blit=True
         )
+        if save:
+            file_path = self._plot_path / f"{day}.gif"
+            ani.save(file_path)
         plt.show()
 
 
@@ -147,4 +149,4 @@ e = ExpSum()
 e.plot()
 e.plot("2021-08-01", "2021-09-30")
 e.plot("2021-10-01", "2021-12-31", multi=True)
-e.animate(date(2021, 9, 17))
+e.animate(date(2021, 9, 17), save=True)
