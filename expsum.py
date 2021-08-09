@@ -51,10 +51,9 @@ def _plot_args(start, end, path, multi):
     if multi:
         while True:
             sixpack = tuple(islice(days, 0, 6))
-            if len(sixpack) > 0:
-                yield sixpack, path
-            else:
+            if len(sixpack) == 0:
                 break
+            yield sixpack, path
     else:
         yield from ((day, path) for day in days)
 
