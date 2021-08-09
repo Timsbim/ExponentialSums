@@ -125,14 +125,8 @@ class ExpSum:
         # Creating plot folder
         self._plot_path.mkdir(parents=True, exist_ok=True)
 
-        # Calculating th number of arguments to adjust number of pool workers
-        num_args = (end - start).days + 1
-        if multi:
-            num_args, r = divmod(num_args, 6)
-            if r:
-                num_args += 1
-
-        with Pool(min(num_args, 12)) as p:
+        # Plot in parallel using a worker pool
+        with Pool(12) as p:
             p.starmap(_plot, _plot_args(start, end, self._plot_path, multi))
 
     def animate(self, day=date.today(), save=False):
