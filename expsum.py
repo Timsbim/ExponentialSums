@@ -150,6 +150,7 @@ class ExpSum:
         if save:
             file_path = self._plot_path / f"{day}.gif"
             ani.save(file_path)
+            print(f"{file_path.name} ready")
         plt.show()
 
 
