@@ -79,7 +79,7 @@ def _plot(days, path):
         file_path = path / f"{days[0]} - {days[-1]}.png"
         plt.savefig(file_path)
         plt.close('all')
-    else:  # Single days
+    else:  # Single day
         day = days
         fig, ax = plt.subplots(figsize=(5, 5))
         # Calculating vertices
