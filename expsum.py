@@ -44,19 +44,19 @@ def _prepare_plot(ax, x_axis, y_axis):
     ax.set_ylim(y_0 - half_interval, y_0 + half_interval)
 
 
-def _plot_args(start, end, multi):
+def _plot_args(start, end, path, multi):
     days = (
         start + timedelta(days=days) for days in range((end - start).days + 1)
     )
     if multi:
         while True:
-            s = tuple(islice(days, 0, 6))
-            if len(s) > 0:
-                yield s
+            sixpack = tuple(islice(days, 0, 6))
+            if len(sixpack) > 0:
+                yield sixpack, path
             else:
                 break
     else:
-        yield from days
+        yield from ((day, path) for day in days)
 
 
 def _plot(days, path):
@@ -75,10 +75,9 @@ def _plot(days, path):
             ax.axis('off')
             ax.plot(x_axis, y_axis, linewidth=1.5)
 
-        # Saving plots in file
+        # Setting file path
         file_path = path / f"{days[0]} - {days[-1]}.png"
-        plt.savefig(file_path)
-        plt.close('all')
+
     else:  # Single day
         day = days
         fig, ax = plt.subplots(figsize=(5, 5))
@@ -90,10 +89,13 @@ def _plot(days, path):
         ax.axis('off')
         ax.plot(x_axis, y_axis, linewidth=1.5)
 
-        # Saving plot in file
+        # Setting file path
         file_path = path / f"{day}.png"
-        plt.savefig(file_path)
-        plt.close('all')
+
+    # Saving the plot
+    plt.savefig(file_path)
+    plt.close('all')
+    print(f"{file_path.name} ready")
 
 
 class ExpSum:
@@ -123,10 +125,7 @@ class ExpSum:
         # Creating plot folder
         self._plot_path.mkdir(parents=True, exist_ok=True)
 
-        # Preparing the arguments for the Pool: args and number of arguments
-        args = (
-            (days, self._plot_path) for days in _plot_args(start, end, multi)
-        )
+        # Calculating th number of arguments to adjust number of pool workers
         num_args = (end - start).days + 1
         if multi:
             num_args, r = divmod(num_args, 6)
@@ -134,7 +133,7 @@ class ExpSum:
                 num_args += 1
 
         with Pool(min(num_args, 12)) as p:
-            p.starmap(_plot, args)
+            p.starmap(_plot, _plot_args(start, end, self._plot_path, multi))
 
     def animate(self, day=date.today(), save=False):
         if isinstance(day, str):
@@ -167,4 +166,3 @@ if __name__ == "__main__":  # Multiprocessing -- shielding the process creation
     es.plot("2021-08-01", "2021-08-30")
     es.plot("2021-10-01", "2021-12-31", multi=True)
     es.animate(save=True)
-
