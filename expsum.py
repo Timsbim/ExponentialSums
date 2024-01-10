@@ -127,11 +127,13 @@ def plot(days, folder):
     # Saving the plot
     plt.savefig(file_path)
     plt.close('all')
-    print(f'{file_path.name} ready')
+    print(f'File `{file_path}` ready ...')
 
 
 if __name__ == '__main__':
 
     start, end, save_to, multi = get_args()
+    print(f'Creating exponential sum animations from {start} to {end} ...')
     for days, path in plot_args(start, end, save_to, multi):
         plot(days, path)
+    print('... finished.')
