@@ -133,7 +133,7 @@ def plot(days, folder):
 if __name__ == '__main__':
 
     start, end, save_to, multi = get_args()
-    print(f'Creating exponential sum animations from {start} to {end} ...')
+    print(f'Creating exponential sum plots from {start} to {end} ...')
     for days, path in plot_args(start, end, save_to, multi):
         plot(days, path)
     print('... finished.')
