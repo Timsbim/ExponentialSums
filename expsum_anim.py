@@ -1,10 +1,10 @@
-import multiprocessing as mp
 from argparse import ArgumentParser
 from cmath import exp
 from datetime import date, datetime as dt, timedelta
 from functools import partial
 from itertools import accumulate, groupby
 from math import lcm, pi as PI
+from multiprocessing import cpu_count, Pool
 from operator import attrgetter
 from pathlib import Path
 
@@ -131,7 +131,7 @@ if __name__ == '__main__':
     print(f'Creating exponential sum animations from {start} to {end} ...')
     args = animate_args(start, end, save_to)
     if (end - start).days > 4:
-        with mp.Pool(mp.cpu_count() // 2) as pool:
+        with Pool(cpu_count() // 2) as pool:
             pool.starmap(animate, args)
     else:
         for day, folder in args:

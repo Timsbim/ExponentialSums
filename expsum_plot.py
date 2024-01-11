@@ -1,9 +1,9 @@
-import multiprocessing as mp
 from argparse import ArgumentParser
 from cmath import exp
 from datetime import date, datetime as dt, timedelta
 from itertools import accumulate, groupby, islice
 from math import lcm, pi as PI
+from multiprocessing import cpu_count, Pool
 from operator import attrgetter
 from pathlib import Path
 
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     print(f'Creating exponential sum plots from {start} to {end} ...')
     args = plot_args(start, end, save_to, multi)
     if (end - start).days >= 12:
-        with mp.Pool(mp.cpu_count() // 2) as pool:
+        with Pool(cpu_count() // 2) as pool:
             pool.starmap(plot, args)
     else:
         for days, folder in args:
