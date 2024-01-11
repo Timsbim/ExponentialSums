@@ -136,7 +136,7 @@ if __name__ == '__main__':
     start, end, save_to, multi = get_args()
     print(f'Creating exponential sum plots from {start} to {end} ...')
     args = plot_args(start, end, save_to, multi)
-    if (end - start).days >= 12:
+    if (end - start).days >= 12 and cpu_count() >= 4:
         with Pool(cpu_count() // 2) as pool:
             pool.starmap(plot, args)
     else:

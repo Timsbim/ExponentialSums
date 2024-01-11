@@ -130,7 +130,7 @@ if __name__ == '__main__':
     start, end, save_to = get_args()
     print(f'Creating exponential sum animations from {start} to {end} ...')
     args = animate_args(start, end, save_to)
-    if (end - start).days > 4:
+    if (end - start).days > 4 and cpu_count() >= 4:
         with Pool(cpu_count() // 2) as pool:
             pool.starmap(animate, args)
     else:
