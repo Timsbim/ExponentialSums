@@ -1,10 +1,10 @@
+import multiprocessing as mp
 from argparse import ArgumentParser
 from cmath import exp
 from datetime import date, datetime as dt, timedelta
 from functools import partial
 from itertools import accumulate, groupby
 from math import lcm, pi as PI
-from multiprocessing import Pool
 from operator import attrgetter
 from pathlib import Path
 
@@ -112,8 +112,6 @@ def animate(day, folder, *, max_size=500, duration=5_000):
 
     # Create and save animation
     file_path = folder / f'{day}.gif'
-
-    print(f'   {file_path} ... ', end='', flush=True)
     FuncAnimation(
         fig=fig,
         func=partial(update_frames, line=line, x=x_axis, y=y_axis),
@@ -124,13 +122,18 @@ def animate(day, folder, *, max_size=500, duration=5_000):
         blit=True
     ).save(file_path, writer='pillow')
     plt.close()
-    print('ready.', flush=True)
+    print(f'   {file_path} ... ready.', flush=True)
 
 
 if __name__ == '__main__':
 
     start, end, save_to = get_args()
     print(f'Creating exponential sum animations from {start} to {end} ...')
-    with Pool(4) as pool:
-        pool.starmap(animate, animate_args(start, end, save_to))
+    args = animate_args(start, end, save_to)
+    if (end - start).days > 4:
+        with mp.Pool(mp.cpu_count() // 2) as pool:
+            pool.starmap(animate, args)
+    else:
+        for day, folder in args:
+            animate(day, foler)
     print('... finished.')

@@ -1,3 +1,4 @@
+import multiprocessing as mp
 from argparse import ArgumentParser
 from cmath import exp
 from datetime import date, datetime as dt, timedelta
@@ -125,16 +126,20 @@ def plot(days, folder):
         file_path = folder / f'{day}.png'
     
     # Saving the plot
-    print(f'   {file_path} ... ', end='', flush=True)
     plt.savefig(file_path)
     plt.close('all')
-    print(f'ready.', flush=True)
+    print(f'   {file_path} ... ready.', flush=True)
 
 
 if __name__ == '__main__':
 
     start, end, save_to, multi = get_args()
     print(f'Creating exponential sum plots from {start} to {end} ...')
-    for days, path in plot_args(start, end, save_to, multi):
-        plot(days, path)
+    args = plot_args(start, end, save_to, multi)
+    if (end - start).days >= 12:
+        with mp.Pool(mp.cpu_count() // 2) as pool:
+            pool.starmap(plot, args)
+    else:
+        for days, folder in args:
+            plot(days, path)
     print('... finished.')
