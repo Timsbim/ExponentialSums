@@ -125,9 +125,10 @@ def plot(days, folder):
         file_path = folder / f'{day}.png'
     
     # Saving the plot
+    print(f'   {file_path} ... ', end='', flush=True)
     plt.savefig(file_path)
     plt.close('all')
-    print(f'File `{file_path}` ready ...')
+    print(f'ready.', flush=True)
 
 
 if __name__ == '__main__':

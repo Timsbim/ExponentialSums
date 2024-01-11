@@ -4,6 +4,7 @@ from datetime import date, datetime as dt, timedelta
 from functools import partial
 from itertools import accumulate, groupby
 from math import lcm, pi as PI
+from multiprocessing import Pool
 from operator import attrgetter
 from pathlib import Path
 
@@ -112,6 +113,7 @@ def animate(day, folder, *, max_size=500, duration=5_000):
     # Create and save animation
     file_path = folder / f'{day}.gif'
 
+    print(f'   {file_path} ... ', end='', flush=True)
     FuncAnimation(
         fig=fig,
         func=partial(update_frames, line=line, x=x_axis, y=y_axis),
@@ -121,15 +123,14 @@ def animate(day, folder, *, max_size=500, duration=5_000):
         repeat_delay=1_000,
         blit=True
     ).save(file_path, writer='pillow')
-    plt.close('all')
-
-    print(f'File `{file_path}` ready ...')
+    plt.close()
+    print('ready.', flush=True)
 
 
 if __name__ == '__main__':
 
     start, end, save_to = get_args()
     print(f'Creating exponential sum animations from {start} to {end} ...')
-    for day, folder in animate_args(start, end, save_to):
-        animate(day, folder)
+    with Pool(4) as pool:
+        pool.starmap(animate, animate_args(start, end, save_to))
     print('... finished.')
