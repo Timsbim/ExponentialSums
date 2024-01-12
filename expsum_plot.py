@@ -141,5 +141,5 @@ if __name__ == '__main__':
             pool.starmap(plot, args)
     else:
         for days, folder in args:
-            plot(days, path)
+            plot(days, folder)
     print('... finished.')
