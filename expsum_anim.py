@@ -135,5 +135,5 @@ if __name__ == '__main__':
             pool.starmap(animate, args)
     else:
         for day, folder in args:
-            animate(day, foler)
+            animate(day, folder)
     print('... finished.')
