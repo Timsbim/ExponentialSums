@@ -79,7 +79,7 @@ def plot(nss, folder, *, size=5):
     # Saving the plot
     plt.savefig(file_path)
     plt.close('all')
-    print(f'   {file_path} ... ready.', flush=True)
+    print(f'\t{file_path} ... ready.', flush=True)
 
 
 def update_frames(no, *, line, x, y):
@@ -87,7 +87,7 @@ def update_frames(no, *, line, x, y):
     return (line,)
 
 
-def animate(ns, folder, *, size=5, max_size=500, duration=5_000):
+def animate(ns, folder, *, size=5, max_len=500, duration=5_000):
 
     # Setup figure and axes
     x_axis, y_axis = vertices(ns)
@@ -97,15 +97,15 @@ def animate(ns, folder, *, size=5, max_size=500, duration=5_000):
     
     # If number of points is too high: increase step size (number of
     # segments added in one animation step)
-    size = len(x_axis)
-    chunksize = max(1, size // max_size)
-    if (rest := size % chunksize) != 0:
-        size += chunksize - rest
-    frames = range(1, size + 1, chunksize)
+    length = len(x_axis)
+    chunksize = max(1, length // max_len)
+    if (rest := length % chunksize) != 0:
+        length += chunksize - rest
+    frames = range(1, length + 1, chunksize)
     
     # Make sure that the duration of the animation is approximately
     # duration many milliseconds
-    interval = max(1, duration // (size // chunksize))
+    interval = max(1, duration // (length // chunksize))
     
     # Create and save animation
     numbers = '-'.join(map(str, ns))
@@ -120,4 +120,4 @@ def animate(ns, folder, *, size=5, max_size=500, duration=5_000):
         blit=True
     ).save(file_path, writer='pillow')
     plt.close()
-    print(f'   {file_path} ... ready.', flush=True)
+    print(f'\t{file_path} ... ready.', flush=True)
