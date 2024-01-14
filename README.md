@@ -2,12 +2,11 @@
 Calculation and drawing of John D. Cook's [Exponentional Sum of the Day](https://www.johndcook.com/expsum/). Please visit his website!
 
 ```math
+    z_m =
     \sum_{n=0}^m
-    e^{2\pi i \left(n/n_1 + n^2/n_2 + \dots + n^k/n_k \right)}
-```
-```math
-    \sum_{n=0}^m
-    \exp \left( 2\pi i \left( \frac{n}{n_1} + \frac{n^2}{n_2} + \dots + \frac{n^k}{n_k} \right)  \right)
+        \exp \left( 2\pi i \left(
+            \frac{n}{n_1} + \frac{n^2}{n_2} + \dots + \frac{n^k}{n_k}
+        \right) \right)
 ```
 
 ## Examples: 
