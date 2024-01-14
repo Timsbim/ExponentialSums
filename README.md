@@ -15,7 +15,7 @@ for positive integers $`n_1, \dots, n_k`$.
 # Days
 In the case of a day $`m/d/y`$ ($`y`$ only the last two digits):
 ```math
-    \begin{matrix}[r, c, l]
+    \begin{matrix}[rcl]
     n_1 & = & m \\
     n_2 & = & d \\
     n_3 & = & y \text{(only the last 2 digits)}
