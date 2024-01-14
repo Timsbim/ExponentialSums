@@ -7,7 +7,7 @@ Calculation and drawing of John D. Cook's [Exponentional Sum of the Day](https:/
 ```
 ```math
     \sum_{n=0}^m
-    \exp \left( 2\pi i \left( \frac{n}{n_1} + \frac{n^2}{n_2} + \dots + \frac{n^k}{n_k} \right)  \right)}
+    \exp \left( 2\pi i \left( \frac{n}{n_1} + \frac{n^2}{n_2} + \dots + \frac{n^k}{n_k} \right)  \right)
 ```
 
 ## Examples: 
