@@ -11,7 +11,7 @@ General idea: Look at the sums $`z_m`$
 ```
 for positive integers $`n_1, \dots, n_k`$.
 
-In the case of a day $`m/d/y`$ ($`y`$ only the last two digits): $`k = 3`$ and $`n_1 = m`$, $`n_2 = d`$ and $`n_3 = y`$.
+In the case of a day $`m/d/y`$ ($`y`$ only the last two digits): $`n_1 = m`$, $`n_2 = d`$ and $`n_3 = y`$ (ie. $`k = 3`$).
 
 ## Examples: 
 
