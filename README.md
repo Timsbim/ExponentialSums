@@ -12,10 +12,16 @@ General idea: Look at the sums $`z_m`$
 ```
 for positive integers $`n_1, \dots, n_k`$.
 
+# Days
 In the case of a day $`m/d/y`$ ($`y`$ only the last two digits): $`n_1 = m`$, $`n_2 = d`$ and $`n_3 = y`$ (ie. $`k = 3`$).
-
-## Examples: 
-
+```math
+    \begin{eqnarry}
+    n_1 & = & m \\
+    n_2 & = & d \\
+    n_3 & = & y
+    \end{eqnarry}
+```
+## Examples
 ### Plots
 #### 4/1/2024
 ![example](Days/24/04/4-1-24.png)
