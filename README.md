@@ -1,4 +1,5 @@
-# ExponentialSums
+# Exponential Sums
+
 Calculation and drawing of John D. Cook's [Exponentional Sum of the Day](https://www.johndcook.com/expsum/). Please visit his website!
 
 General idea: Look at the sums $`z_m`$
