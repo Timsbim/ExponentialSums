@@ -9,7 +9,7 @@ General idea: Look at the sums $`z_m`$
             \frac{n}{n_1} + \frac{n^2}{n_2} + \dots + \frac{n^k}{n_k}
         \right) \right)
 ```
-for positive integers $`n_1, n_2, ..., n_k`$.
+for positive integers $`n_1, \dots, n_k`$.
 
 ## Examples: 
 
