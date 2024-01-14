@@ -2,7 +2,7 @@
 Calculation and drawing of John D. Cook's [Exponentional Sum of the Day](https://www.johndcook.com/expsum/). Please visit his website!
 
 ```math
-    exp\left(2\pi i(\sum_{i=1}^k \frac{n^i}{n_i})\right)
+    exp\left(2\pi i\dot\left(\sum_{i=1}^k \frac{n^i}{n_i}\right)\right)
 ```
 
 ## Examples: 
