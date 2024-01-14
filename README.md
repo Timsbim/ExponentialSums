@@ -13,12 +13,12 @@ General idea: Look at the sums $`z_m`$
 for positive integers $`n_1, \dots, n_k`$.
 
 # Days
-In the case of a day $`m/d/y`$ ($`y`$ only the last two digits): $`n_1 = m`$, $`n_2 = d`$ and $`n_3 = y`$ (ie. $`k = 3`$).
+In the case of a day $`m/d/y`$ ($`y`$ only the last two digits):
 ```math
     \begin{matrix}
     n_1 & = & m \\
     n_2 & = & d \\
-    n_3 & = & y
+    n_3 & = & y \text{(only the last 2 digits)}
     \end{matrix}
 ```
 ## Examples
