@@ -13,7 +13,7 @@ General idea: Look at the sums $`z_m`$
 for positive integers $`n_1, \dots, n_k`$.
 
 # Days
-In the case of a day m/d/y:
+In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by:
 ```math
     \begin{matrix*}[rcl]
         n_1 & = & m \\
@@ -21,6 +21,7 @@ In the case of a day m/d/y:
         n_3 & = & y \quad\text{(only the last two digits)}
     \end{matrix*}
 ```
+
 ## Examples
 ### Plots
 #### 4/1/2024
