@@ -18,7 +18,7 @@ In the case of a day m/d/y:
     \begin{matrix*}[rcl]
         n_1 & = & m \\
         n_2 & = & d \\
-        n_3 & = & y \quad\text{(only the last tw0 digits)}
+        n_3 & = & y \quad\text{(only the last two digits)}
     \end{matrix*}
 ```
 ## Examples
