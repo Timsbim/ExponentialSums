@@ -16,9 +16,9 @@ for positive integers $`n_1, \dots, n_k`$.
 In the case of a day $`m/d/y`$ ($`y`$ only the last two digits): $`n_1 = m`$, $`n_2 = d`$ and $`n_3 = y`$ (ie. $`k = 3`$).
 ```math
     \begin{equation}
-    n_1 & = & m \\
-    n_2 & = & d \\
-    n_3 & = & y
+    n_1 & = m \\
+    n_2 & = d \\
+    n_3 & = y
     \end{equation}
 ```
 ## Examples
