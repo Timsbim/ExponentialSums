@@ -11,6 +11,8 @@ General idea: Look at the sums $`z_m`$
 ```
 for positive integers $`n_1, \dots, n_k`$.
 
+In the case of a day $`m/d/y`$: $`k = 3`$ and $`n_1 = m`$, $`n_2 = d` and $`n_3 = y % 100`$.
+
 ## Examples: 
 
 ### Plots
