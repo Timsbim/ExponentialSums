@@ -38,7 +38,7 @@ def prepare_axes(ax, x_axis, y_axis):
     ax.axis('off')
 
 
-def plot(nss, folder, *, size=5):
+def plot(nss, folder, size=5):
 
     if isinstance(nss[0], tuple):
         
@@ -87,7 +87,7 @@ def update_frames(no, *, line, x, y):
     return (line,)
 
 
-def animate(ns, folder, *, size=5, max_len=500, duration=5_000):
+def animate(ns, folder, size=5, *, max_len=500, duration=5_000):
 
     # Setup figure and axes
     x_axis, y_axis = vertices(ns)

@@ -36,7 +36,7 @@ if args.permutations:
         nss = tuple(islice(perms, 6))
         if len(nss) == 0:
             break
-        plot(nss, args.save_to)
+        plot(nss, save_to)
 
 else:
     

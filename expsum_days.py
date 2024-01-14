@@ -67,26 +67,25 @@ if __name__ == '__main__':
 
     args = arguments()
     start, end = args.start, args.end
+    pargs = plot_arguments(start, end, args.save_to, args.multi)
     if args.animate:
         
         print(f'Exponential sum animations from {start} to {end} ...')
-        args = plot_arguments(args.start, args.end, args.save_to)
         if (end - start).days > 4 and cpu_count() >= 4:
             with Pool(cpu_count() // 2) as pool:
-                pool.starmap(animate, args)
+                pool.starmap(animate, pargs)
         else:
-            for day, folder in args:
+            for day, folder in pargs:
                 animate(day, folder)
     
     else:
         
         print(f'Exponential sum plots from {start} to {end} ...')
-        args = plot_argumentss(start, end, args.save_to, args.multi)
         if (end - start).days >= 12 and cpu_count() >= 4:
             with Pool(cpu_count() // 2) as pool:
-                pool.starmap(plot, args)
+                pool.starmap(plot, pargs)
         else:
-            for days, folder in args:
+            for days, folder in pargs:
                 plot(days, folder)
     
     print('... finished.')
