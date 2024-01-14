@@ -3,7 +3,7 @@ Calculation and drawing of John D. Cook's [Exponentional Sum of the Day](https:/
 
 ```math
     \sum_{n=0}^m
-exp\left( 2\pi i \left( \sum_{i=1}^k \frac{n^i}{n_i} \right) \right)
+        e^{\left( 2\pi i \sum_{i=1}^k \frac{n^i}{n_i} \right)}
 ```
 
 ## Examples: 
