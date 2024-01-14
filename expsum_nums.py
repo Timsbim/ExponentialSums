@@ -1,19 +1,53 @@
-from argparse import ArgumentParser
+from argparse import ArgumentParser, RawDescriptionHelpFormatter
 from itertools import islice, permutations
-from multiprocessing import cpu_count, Pool
 from pathlib import Path
+from textwrap import dedent
 
 from utils import animate, plot
 
 
 # Parse command line
-parser = ArgumentParser()
-parser.add_argument('numbers', nargs='+', type=int)
+description = dedent('''\
+    Generates plots of the lines between the partial sums of
+    
+        exp(2πi * (n / n_1 + ... + n**k / n_k))
+    
+    for n in 0, ..., lcm(n_1, ..., n_k).
+    
+    The plots can be static (.png) or animated (.gif). There's also an option
+    to generate overviews for all the permutations of the given numbers.''')
+epilog = dedent('''
+    The idea to look at these fascinating images comes from John D. Cook's
+    exponential sum of the day (https://www.johndcook.com/expsum/). Please
+    visit his website!''')
+parser = ArgumentParser(
+    formatter_class=RawDescriptionHelpFormatter,
+    description=description,
+    epilog=epilog
+)
+parser.add_argument(
+    'numbers', nargs='+', type=int,
+    help='numbers n_1, ..., n_k used for generating the sums'
+)
 group = parser.add_mutually_exclusive_group()
-group.add_argument('-p', '--permutations', action='store_true')
-group.add_argument('-a', '--animate', action='store_true')
-parser.add_argument('-s', '--save-to', default=Path.cwd(), type=Path)
-parser.add_argument('--size', default=5, type=int)
+group.add_argument(
+    '-p', '--permutations', action='store_true',
+    help='''generate overview plots for all permutations of the given numbers
+         (not allowed in comination with animation)'''
+)
+group.add_argument(
+    '-a', '--animate', action='store_true',
+    help='generate an animated .gif instead of a plain .png plot'
+)
+parser.add_argument(
+    '-s', '--save-to', default=Path.cwd(), type=Path,
+    help='folder for saving the files (default is cwd)'
+)
+parser.add_argument(
+    '--size', default=5, type=int,
+    help='''all plots are squares, the argument controls the side size 
+         (default is 5)'''
+)
 args = parser.parse_args()
 
 # Check input for validity (all numbers positve)
