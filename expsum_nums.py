@@ -16,7 +16,7 @@ description = dedent('''\
     
     The plots can be static (.png) or animated (.gif). There's also an option
     to generate overviews for all the permutations of the given numbers.''')
-epilog = dedent('''
+epilog = dedent('''\
     The idea to look at these fascinating images comes from John D. Cook's
     exponential sum of the day (https://www.johndcook.com/expsum/). Please
     visit his website!''')

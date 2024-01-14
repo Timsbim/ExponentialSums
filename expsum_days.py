@@ -22,7 +22,7 @@ def arguments():
         The plots can be static (.png) or animated (.gif). There's also an option
         to generate overviews for the given day range in form of six days per
         plot.''')
-    epilog = dedent('''
+    epilog = dedent('''\
         The idea to look at these fascinating images comes from John D. Cook's
         exponential sum of the day (https://www.johndcook.com/expsum/). Please
         visit his website!''')
