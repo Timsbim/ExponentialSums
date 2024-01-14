@@ -1,6 +1,7 @@
 # ExponentialSums
 Calculation and drawing of John D. Cook's [Exponentional Sum of the Day](https://www.johndcook.com/expsum/). Please visit his website!
 
+General idea: Look at the sums $`z_m`$
 ```math
     z_m =
     \sum_{n=0}^m
@@ -8,6 +9,7 @@ Calculation and drawing of John D. Cook's [Exponentional Sum of the Day](https:/
             \frac{n}{n_1} + \frac{n^2}{n_2} + \dots + \frac{n^k}{n_k}
         \right) \right)
 ```
+for positive integers $`n_1, n_2, ..., n_k`$.
 
 ## Examples: 
 
