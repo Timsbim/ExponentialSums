@@ -1,18 +1,16 @@
 from cmath import exp
 from functools import partial
 from itertools import accumulate
-from math import lcm, pi as PI, prod
+from math import fsum, lcm, pi as PI
 
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 
 def vertices(ns):
-    """See: https://www.johndcook.com/expsum/details.html"""
     c = 2j * PI
-    cs = tuple(c / n for n in ns)
     zs = accumulate(
-        prod(exp(c * n**e) for e, c in enumerate(cs, start=1))
+        exp(c * fsum(n**k / ni for k, ni in enumerate(ns, start=1)))
         for n in range(lcm(*ns) + 1)
     )
 
