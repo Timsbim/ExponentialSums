@@ -28,6 +28,12 @@ In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
 
 ## Examples
 ### Plots
+
+**4/1/2024**|**4/17/2024**
+:-:|:-:
+<img src="Days/24/04/4-1-24.png" alt="example" width="300"/>|<img src="Days/24/04/4-17-24.png" alt="example" width="300"/>
+
+
 #### 4/1/2024
 
 <img src="Days/24/04/4-1-24.png" alt="example" width="300"/>
