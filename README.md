@@ -33,17 +33,25 @@ In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
 <img src="Days/24/04/4-1-24.png" alt="example" width="300"/>
 
 #### 4/17/2024
-![example](Days/24/04/4-17-24.png)
+
+<img src="Days/24/04/4-17-24.png" alt="example" width="300"/>
+
 #### 5/19/2024
-![example](Days/24/05/5-19-24.png)
+
+<img src="Days/24/05/5-19-24.png" alt="example" width="300"/>
 
 ### Animations
 #### 4/1/2024
-![example](Days/24/04/4-1-24.gif)
+
+<img src="Days/24/04/4-1-24.gif" alt="example" width="300"/>
+
 #### 4/17/2024
-![example](Days/24/04/4-17-24.gif)
+
+<img src="Days/24/04/4-17-24.gif" alt="example" width="300"/>
+
 #### 5/19/2024
-![example](Days/24/05/5-19-24.gif)
+
+<img src="Days/24/05/5-19-24.gif" alt="example" width="300"/>
 
 
  [expsum]:https://www.johndcook.com/expsum/
