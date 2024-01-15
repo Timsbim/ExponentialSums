@@ -26,6 +26,40 @@ In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
 ```
  (for $`y`$ only the last two digits).
 
+## expsum_days.py
+
+```none
+expsum_days.py [-h] [-f START] [-t END] [-s SAVE_TO] [-m | -a]
+
+Generates plots of the lines between the partial sums of
+
+    exp(2πi * (n / month + n**2 / day + n**3 / year))
+
+for n in 0, ..., lcm(month, day, year). For year only the last two digits
+are used (year mod 100).
+
+The plots can be static (.png) or animated (.gif). There's also an option
+to generate overviews for the given day range in form of six days per
+plot.
+
+options:
+  -h, --help            show this help message and exit
+  -f START, --from START
+                        first day (YYYY-MM-DD) of the day range (default is
+                        today)
+  -t END, --to END      last day (YYYY-MM-DD) of the day range (default is
+                        today)
+  -s SAVE_TO, --save-to SAVE_TO
+                        folder for saving the files (default is cwd)
+  -m, --multi           generate overview plots for the given day range (not
+                        allowed in comination with animation)
+  -a, --animate         generate an animated .gif instead of a plain .png plot
+
+The idea to look at these fascinating images comes from John D. Cook's
+exponential sum of the day (https://www.johndcook.com/expsum/). Please
+visit his website!
+```
+
 ## Examples
 ### Plots
 
