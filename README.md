@@ -37,7 +37,17 @@ options:
 
 ## Examples
 
-<img src="Numbers/2_13_31/2-13-31_31-13-2.png" alt="example" width="500"/>
+### Plots
+
+**2-5-7-11**|**5-7-2-11**|**11-7-5-2**
+:-:|:-:|:-:
+<img src="Numbers/2_5_7_11/2-5-7-11.png" width="250"/>|<img src="Numbers/2_5_7_11/5-7-2-11.png" width="250"/>|<img src="Numbers/2_5_7_11/11-7-5-2.png" width="250"/>
+
+### Animations
+
+**2-5-7-11**|**5-7-2-11**|**11-7-5-2**
+:-:|:-:|:-:
+<img src="Numbers/2_5_7_11/2-5-7-11.gif" width="250"/>|<img src="Numbers/2_5_7_11/5-7-2-11.gif" width="250"/>|<img src="Numbers/2_5_7_11/11-7-5-2.gif" width="250"/>
 
 # Days
 In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
@@ -70,6 +80,7 @@ options:
 ```
 
 ## Examples
+
 ### Plots
 
 **4/1/2024**|**4/17/2024**|**5/19/2024**
