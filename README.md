@@ -34,7 +34,6 @@ In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
 <img src="Days/24/04/4-1-24.png" width="250"/>|<img src="Days/24/04/4-17-24.png" width="250"/>|<img src="Days/24/05/5-19-24.png" width="250"/>
 
 ### Animations
-#### 4/1/2024
 
 **4/1/2024**|**4/17/2024**|**5/19/2024**
 :-:|:-:|:-:
