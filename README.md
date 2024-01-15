@@ -13,7 +13,7 @@ General idea: for positive integers $`n_1,\, \dots,\, n_k`$ take the sums
 as the vertices of a traverse in $`\mathbb{R}^2`$ ($`\mathbb{C}`$), plot it, and be filled with wonder. The best _general_ choice for the length of the traverse seems to be the lowest common multiplier of $`n_1,\, \dots,\, n_k`$. But there are quite some cases where this is too low.
 
 # Numbers
-<img src="Numbers/2_13_31/2-13-31_31-13-2.png" alt="example" width="750"/>
+<img src="Numbers/2_13_31/2-13-31_31-13-2.png" alt="example" width="500"/>
 
 # Days
 In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
