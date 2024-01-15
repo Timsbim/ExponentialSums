@@ -13,6 +13,43 @@ General idea: for positive integers $`n_1,\, \dots,\, n_k`$ take the sums
 as the vertices of a traverse in $`\mathbb{R}^2`$ ($`\mathbb{C}`$), plot it, and be filled with wonder. The best _general_ choice for the length of the traverse seems to be the lowest common multiplier of $`n_1,\, \dots,\, n_k`$. But there are quite some cases where this is too low.
 
 # Numbers
+
+## Script `expsum_nums.py`
+
+```none
+usage: expsum_nums.py [-h] [-p | -a] [-s SAVE_TO] [--size SIZE]
+                             numbers [numbers ...]
+
+Generates plots of the lines between the partial sums of
+
+    exp(2πi * (n / n_1 + ... + n**k / n_k))
+
+for n in 0, ..., lcm(n_1, ..., n_k).
+
+The plots can be static (.png) or animated (.gif). There's also an option
+to generate overviews for all the permutations of the given numbers.
+
+positional arguments:
+  numbers               numbers n_1, ..., n_k used for generating the sums
+
+options:
+  -h, --help            show this help message and exit
+  -p, --permutations    generate overview plots for all permutations of the
+                        given numbers (not allowed in comination with
+                        animation)
+  -a, --animate         generate an animated .gif instead of a plain .png plot
+  -s SAVE_TO, --save-to SAVE_TO
+                        folder for saving the files (default is cwd)
+  --size SIZE           all plots are squares, the argument controls the side
+                        size (default is 5)
+
+The idea to look at these fascinating images comes from John D. Cook's
+exponential sum of the day (https://www.johndcook.com/expsum/). Please
+visit his website!
+```
+
+## Examples
+
 <img src="Numbers/2_13_31/2-13-31_31-13-2.png" alt="example" width="500"/>
 
 # Days
@@ -26,10 +63,10 @@ In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
 ```
  (for $`y`$ only the last two digits).
 
-## expsum_days.py
+## Script `expsum_days.py`
 
 ```none
-expsum_days.py [-h] [-f START] [-t END] [-s SAVE_TO] [-m | -a]
+usage: expsum_days.py [-h] [-f START] [-t END] [-s SAVE_TO] [-m | -a]
 
 Generates plots of the lines between the partial sums of
 
