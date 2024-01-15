@@ -59,12 +59,12 @@ args.numbers = tuple(args.numbers)
 
 # Plot
 ns_str = ', '.join(map(str, args.numbers))
+ns = tuple(sorted(args.numbers))
+save_to = args.save_to / '_'.join(map(str, ns))
+save_to.mkdir(parents=True, exist_ok=True)
 if args.permutations:
     
     print(f'Exponential sum plots for all permutations of {ns_str} ...')
-    ns = tuple(sorted(args.numbers))
-    save_to = args.save_to / '_'.join(map(str, ns))
-    save_to.mkdir(parents=True, exist_ok=True)
     perms = permutations(ns)
     while True:
         nss = tuple(islice(perms, 6))
@@ -74,12 +74,11 @@ if args.permutations:
 
 else:
     
-    args.save_to.mkdir(parents=True, exist_ok=True)
     if args.animate:
         print(f'Exponential sum animation for {ns_str} ...')
-        animate(args.numbers, args.save_to, size=args.size)
+        animate(args.numbers, save_to, size=args.size)
     else:
         print(f'Exponential sum plot for {ns_str} ...')
-        plot(args.numbers, args.save_to, size=args.size)
+        plot(args.numbers, save_to, size=args.size)
 
 print('... finished.')
