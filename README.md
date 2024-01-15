@@ -20,15 +20,6 @@ as the vertices of a traverse in $`\mathbb{R}^2`$ ($`\mathbb{C}`$), plot it, and
 usage: expsum_nums.py [-h] [-p | -a] [-s SAVE_TO] [--size SIZE]
                              numbers [numbers ...]
 
-Generates plots of the lines between the partial sums of
-
-    exp(2πi * (n / n_1 + ... + n**k / n_k))
-
-for n in 0, ..., lcm(n_1, ..., n_k).
-
-The plots can be static (.png) or animated (.gif). There's also an option
-to generate overviews for all the permutations of the given numbers.
-
 positional arguments:
   numbers               numbers n_1, ..., n_k used for generating the sums
 
@@ -42,10 +33,6 @@ options:
                         folder for saving the files (default is cwd)
   --size SIZE           all plots are squares, the argument controls the side
                         size (default is 5)
-
-The idea to look at these fascinating images comes from John D. Cook's
-exponential sum of the day (https://www.johndcook.com/expsum/). Please
-visit his website!
 ```
 
 ## Examples
@@ -68,17 +55,6 @@ In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
 ```none
 usage: expsum_days.py [-h] [-f START] [-t END] [-s SAVE_TO] [-m | -a]
 
-Generates plots of the lines between the partial sums of
-
-    exp(2πi * (n / month + n**2 / day + n**3 / year))
-
-for n in 0, ..., lcm(month, day, year). For year only the last two digits
-are used (year mod 100).
-
-The plots can be static (.png) or animated (.gif). There's also an option
-to generate overviews for the given day range in form of six days per
-plot.
-
 options:
   -h, --help            show this help message and exit
   -f START, --from START
@@ -91,10 +67,6 @@ options:
   -m, --multi           generate overview plots for the given day range (not
                         allowed in comination with animation)
   -a, --animate         generate an animated .gif instead of a plain .png plot
-
-The idea to look at these fascinating images comes from John D. Cook's
-exponential sum of the day (https://www.johndcook.com/expsum/). Please
-visit his website!
 ```
 
 ## Examples
