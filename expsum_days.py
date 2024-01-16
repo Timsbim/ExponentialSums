@@ -74,7 +74,7 @@ def arguments():
           or args.end.year % 100 == 0
           or args.start.year // 100 < args.end.year // 100
     ):
-        parser.exit(1, "Error: day range can't contain turn of century years\n")
+        parser.exit(1, "Error: day range can't contain turn of century years!\n")
     
     return args
 
