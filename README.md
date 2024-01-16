@@ -49,7 +49,7 @@ options:
 :-:|:-:|:-:
 <img src="Numbers/2_5_7_11/2-5-7-11.gif" width="250"/>|<img src="Numbers/2_5_7_11/5-7-2-11.gif" width="250"/>|<img src="Numbers/2_5_7_11/11-7-5-2.gif" width="250"/>
 
-# Days
+## Days
 In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
 ```math
     \begin{matrix*}[rcl]
@@ -60,7 +60,7 @@ In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
 ```
  (for $`y`$ only the last two digits).
 
-## Script `expsum_days.py`
+### Script `expsum_days.py`
 
 ```none
 usage: expsum_days.py [-h] [-f START] [-t END] [-s SAVE_TO] [-m | -a]
@@ -79,15 +79,15 @@ options:
   -a, --animate         generate an animated .gif instead of a plain .png plot
 ```
 
-## Examples
+### Examples
 
-### Plots
+#### Plots
 
 **4/1/2024**|**4/17/2024**|**5/19/2024**
 :-:|:-:|:-:
 <img src="Days/24/04/4-1-24.png" width="250"/>|<img src="Days/24/04/4-17-24.png" width="250"/>|<img src="Days/24/05/5-19-24.png" width="250"/>
 
-### Animations
+#### Animations
 
 **4/1/2024**|**4/17/2024**|**5/19/2024**
 :-:|:-:|:-:
