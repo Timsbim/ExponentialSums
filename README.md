@@ -12,9 +12,9 @@ General idea: for positive integers $`n_1,\, \dots,\, n_k`$ take the sums
 ```
 as the vertices of a traverse in $`\mathbb{R}^2`$ ($`\mathbb{C}`$), plot it, and be filled with wonder. The best _general_ choice for the length of the traverse seems to be the lowest common multiplier of $`n_1,\, \dots,\, n_k`$. But there are quite some cases where this is too low.
 
-# Numbers
+## Numbers
 
-## Script `expsum_nums.py`
+### Script `expsum_nums.py`
 
 ```none
 usage: expsum_nums.py [-h] [-p | -a] [-s SAVE_TO] [--size SIZE]
@@ -35,15 +35,15 @@ options:
                         size (default is 5)
 ```
 
-## Examples
+### Examples
 
-### Plots
+#### Plots
 
 **2-5-7-11**|**5-7-2-11**|**11-7-5-2**
 :-:|:-:|:-:
 <img src="Numbers/2_5_7_11/2-5-7-11.png" width="250"/>|<img src="Numbers/2_5_7_11/5-7-2-11.png" width="250"/>|<img src="Numbers/2_5_7_11/11-7-5-2.png" width="250"/>
 
-### Animations
+#### Animations
 
 **2-5-7-11**|**5-7-2-11**|**11-7-5-2**
 :-:|:-:|:-:
