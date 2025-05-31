@@ -52,11 +52,11 @@ options:
 ## Days
 In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
 ```math
-    \begin{array*}[rcl]
+    \begin{array}[rcl]
         n_1 & = & m \\
         n_2 & = & d \\
         n_3 & = & y
-    \end{array*}
+    \end{array}
 ```
  (for $`y`$ only the last two digits).
 
