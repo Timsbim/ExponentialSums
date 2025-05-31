@@ -53,9 +53,9 @@ options:
 In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
 ```math
     \begin{array}[rcl]
-        n_1 & = & m \\
-        n_2 & = & d \\
-        n_3 & = & y
+        n_{1} & = & m \\
+        n_{2} & = & d \\
+        n_{3} & = & y
     \end{array}
 ```
  (for $`y`$ only the last two digits).
