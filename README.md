@@ -50,15 +50,7 @@ options:
 <img src="Numbers/2_5_7_11/2-5-7-11.gif" width="250"/>|<img src="Numbers/2_5_7_11/5-7-2-11.gif" width="250"/>|<img src="Numbers/2_5_7_11/11-7-5-2.gif" width="250"/>
 
 ## Days
-In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by
-```math
-    \begin{array}{ccc}
-        n_{1} & = & m \\
-        n_{2} & = & d \\
-        n_{3} & = & y \\
-    \end{array}
-```
- (for $`y`$ only the last two digits).
+In the case of a day $`m/d/y`$ the corresponding exponential sum is defined by $`n_1 = m`$, $`n_2 = d`$ and $`n_3 = y`$ (for $`y`$ only the last two digits).
 
 ### Script `expsum_days.py`
 
