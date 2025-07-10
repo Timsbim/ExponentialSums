@@ -6,7 +6,7 @@ General idea: for positive integers $`n_1,\, \dots,\, n_k`$ take the sums
 ```math
     z_m =
     \sum_{n=0}^m
-        \exp \left( 2\pi i \left(
+        \exp \left( 2\pi i \cdot \left(
             \frac{n}{n_1} + \frac{n^2}{n_2} + \dots + \frac{n^k}{n_k}
         \right) \right)
 ```
