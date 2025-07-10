@@ -136,6 +136,7 @@ pyproject.toml
 .replit
 replit.nix
 .local
+generated-icon.png
 
 # Misc
 .upm/
