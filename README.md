@@ -10,7 +10,7 @@ General idea: for positive integers $`n_1,\, \dots,\, n_k`$ take the sums
             \frac{n}{n_1} + \frac{n^2}{n_2} + \dots + \frac{n^k}{n_k}
         \right) \right)
 ```
-as the vertices of a traverse in $`\mathbb{R}^2`$ ($`\mathbb{C}`$), plot it, and be filled with wonder. The best _general_ choice for the length of the traverse seems to be the lowest common multiplier of $`n_1,\, \dots,\, n_k`$. But there are quite some cases where this is too low.
+as the vertices of a traverse in $`\mathbb{R}^2`$ ($`\mathbb{C}`$), plot it, and be filled with wonder. The best _general_ choice for the length of the traverse seems to be the lowest common multiplier of $`n_1, \dots,\, n_k`$. But there are quite some cases where this is too low.
 
 ## Numbers
 
